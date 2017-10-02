@@ -1,62 +1,62 @@
-##################################### General #######################################
-#### View macheine kernel
+#General
+## View macheine kernel
 uname -a
 
-#### Change to root
+## Change to root
 sudo -i
 sudo su -
 
-#### Processes related
+## Processes related
 ps -ax | grep nginx
 
-#### Delete pattern matched files.
+## Delete pattern matched files.
 find /path/to/directory -type f -name '*[0-9]x[0-9]*[0-9]x[0-9]*.jpg' -delete
 find /path/to/directory -type f -name '*[0-9]x[0-9]*[0-9]x[0-9]*.jpg' -exec rm {} +
 ray@ray-pc:~/go_workspace/src/wholepro$ find ./ -type f -name 'README_*_*.md' -exec rm {} +
 
-#### View max socket connections
+## View max socket connections
 ray@ray-pc:~$ ulimit -n
 
-#### Restart a service
+## Restart a service
 sudo systemctl restart apache2
 
 #### show line number in vim
 :set number or :set nu
 :set nonumber or :set nonu
 
-#### Mout remote server directory by using sshfs
+## Mout remote server directory by using sshfs
 sshfs shendu@192.168.1.240:/shendu/bin ~/workspace/trans
 sshfs shendu@192.168.1.240:/shendu/bin ~/workspace/trans
 
-#### Copy ssh public key to remote server.
+## Copy ssh public key to remote server.
 ray@ray:~$ cat ~/.ssh/id_rsa.pub | ssh root@138.197.209.57 'cat >> .ssh/authorized_keys'
 
-#### Disable ssh public key access and enable password authentication.
+## Disable ssh public key access and enable password authentication.
 $> sudo vim /etc/ssh/sshd_config
 ##change PubkeyAuthentication yes to PubkeyAuthentication no
 ##change PasswordAuthentication no to PasswordAuthentication yes
 ##restart sshd service
 $> sudo systemctl restart sshd
 
-#### Change device name
+## Change device name
 sudo hostname dock-regis-svr
 sudo vim /etc/hostname
 
-#### Count rows of results
+## Count rows of results
 sudo docker images | tee >(wc -l)
 ## Or
 sudo docker images | awk '{print} END {print NR}'
 
-#### Run process in the background by using nohup
+## Run process in the background by using nohup
 nohup ./hello &
 
-#### View directory in tree structure
+## View directory in tree structure
 tree dir
 
-#### View tar.gz file structure
+## View tar.gz file structure
 tar -tf nsq-1.0.0-compat.linux-amd64.go1.8.tar.gz
 
-#### Aliases
+## Aliases
 INFANTGRPC=$GOPATH/src/infant/vendor/github.com/golang/protobuf/protoc-gen-go
 #SDGRPC=$GOPATH/src/shendu.com/vendor/github.com/golang/protobuf/protoc-gen-go
 SDGRPC=$GOPATH/bin
@@ -65,16 +65,16 @@ alias iprotoc='PATH=$PATH:$INFANTGRPC /usr/local/bin/protoc -I . --go_out=plugin
 alias sdprotoc='/usr/local/bin/protoc --plugin=$SDGRPC/protoc-gen-go -I . --go_out=plugins=grpc:.'
 alias mprotoc='$GOPATH/src/wholepro/vendor/protoc/protoc --plugin=$MICROGRPC/protoc-gen-go -I . --go_out=plugins=micro:.'
 
-#### supervisor
+## supervisor
 sudo apt-get install supervisor
-## create supervisord.conf under dir /etc/supervisor
+### create supervisord.conf under dir /etc/supervisor
 cd /etc/sueprvisor
 cp echo_suerpvisord_conf > supervisord.conf
-## Start supervisor service
+### Start supervisor service
 sudo supervisord
 
-#### ip
-## View ip addresses
+## ip
+### View ip addresses
 ip address
 
 ####################### Kubernetes related ########################
