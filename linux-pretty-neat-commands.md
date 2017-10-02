@@ -1,4 +1,4 @@
-#General
+# General
 ## View macheine kernel
 uname -a
 
